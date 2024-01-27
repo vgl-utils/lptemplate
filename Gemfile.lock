@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    lptemplate (0.1.0)
+      jekyll (~> 4.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,6 +71,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.3)
+  lptemplate!
 
 BUNDLED WITH
    2.5.4

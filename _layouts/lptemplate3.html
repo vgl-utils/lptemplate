@@ -42,10 +42,11 @@ required remote resources:
         .heading {
             letter-spacing: 0;
             text-align: center;
-            font-size: 40px;
+            /*font-size: 48px;*/
             font-weight: 900;
             line-height: 45px;
             padding: 20px 0;
+            font-size: {{ page.headingSize | default: '48px' }};
         }
 
         .heading span b {

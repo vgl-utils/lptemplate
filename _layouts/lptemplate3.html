@@ -86,6 +86,20 @@ required remote resources:
             height: auto;
         }
 
+        .img-text {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*width: 130px;*/
+            height: auto;
+            width: 100%;
+            color: #d0d0d0;
+            font-size: 35px;
+            font-weight: 900;
+            text-shadow: 2px 2px black;
+        }
+
         .lander-img {
             border: 3px solid black;
             width: 810px;
@@ -257,6 +271,7 @@ required remote resources:
             <img class="lander-img" src="{{ page.landerImage | default: 'lander.jpg' }}">
             {% endif %}
             {% include play-btn-b.html %}
+            <span class="img-text">WATCH SHORT, FREE VIDEO</span>
         </a>
     </div>
     <div>

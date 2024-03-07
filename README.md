@@ -1,3 +1,6 @@
+# Sandbox Page URL
+https://vgl-utils.github.io/lptemplates/sandbox/
+
 # lptemplates
 
 Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.

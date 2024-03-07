@@ -43,7 +43,7 @@ required remote resources:
             letter-spacing: 0;
             text-align: center;
             /*todo page variable doesn't work*/
-            font-size: 50px;
+            font-size: min(9vw, 50px);
             font-weight: 900;
             line-height: 45px;
             padding: 20px 0;
@@ -56,7 +56,7 @@ required remote resources:
         .sub-heading {
             font-family: 'Poppins', sans-serif;
             line-height: 29px;
-            font-size: 28px;
+            font-size: min(5vw, 28px);
             font-weight: 400;
             color: rgb(102, 102, 102);
         }
@@ -220,10 +220,10 @@ required remote resources:
 
         /*region mobile screen handling*/
         @media screen and (max-width: 871px), only screen and (max-device-width: 871px) {
-            .heading {
-                font-size: 35px;
-                line-height: 38px;
-            }
+            /*.heading {*/
+            /*    font-size: 40px;*/
+            /*    line-height: 38px;*/
+            /*}*/
             .main-body {
                 width: 95%;
             }

@@ -17,6 +17,8 @@ required remote resources:
     <title>{{ page.title | default: 'lp' }}</title>
     <link rel="icon" type="image/x-icon" href="https://vitalityglow.life/lib/assets/images/favicon.png">
     <link rel="stylesheet" href="https://vitalityglow.life/lib/assets/css/spinner-1.css">
+    <link rel="stylesheet" href="https://vitalityglow.life/lib/assets/css/fonts.css">
+    <!--    <link rel="stylesheet" href="/assets/css/spinner-1.scss">--> <!--    todo why this not work? -->
     <script>
         window.clickmagick_cmc = {
             uid: '{{ page.cmcUid }}',
@@ -29,14 +31,16 @@ required remote resources:
     <script src='//cdn.clkmc.com/cmc.js'></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
+            background-color: rgba(17, 17, 17, 0.18);
         }
 
         .main-body {
             text-align: center;
             width: 871px;
             margin: 0 auto; /* Center the content on the page */
+            background-color: #efefef;
         }
 
         .heading {
@@ -125,21 +129,20 @@ required remote resources:
             line-height: 25px;
         }
 
-        pre b {
-            font-weight: bold; /* Apply bold style to text inside strong tags */
-        }
-
         .paragraph {
             padding-left: 20px; /*somehow need padding to make text looked centered*/
         }
 
-        .paragraph pre {
-            font-family: 'Roboto', sans-serif;
+        .paragraph p {
             font-weight: 400;
             text-align: left;
-            line-height: 23px;
-            font-size: 19px;
             white-space: pre-wrap;
+            color: rgb(102, 102, 102);
+            line-height: 29px;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            margin-block-end: 12px;
+            margin-block-start: 0;
         }
 
         .copyright-txt {
@@ -174,9 +177,10 @@ required remote resources:
         }
 
         footer {
-            background-color: rgb(240, 242, 244); /* Set background color */
+            background-color: #efefef;
             width: 100%; /* Expand background to full width */
             position: relative; /* Allow for positioning of inner content */
+            font-family: Roboto, sans-serif;
         }
 
         footer > * { /* Target all direct children of the footer */
@@ -192,7 +196,7 @@ required remote resources:
             box-sizing: border-box;
             left: 0;
             height: 120px;
-            padding: 10px;
+            padding: 10px 20px;
             width: 871px;
             margin: 0 auto; /* Center the content on the page */
         }
@@ -200,7 +204,7 @@ required remote resources:
         .tnc-link {
             padding-top: 20px;
             margin-left: 50px;
-            color: black;
+            color: #383838FF;
         }
 
         .hidden {
@@ -288,12 +292,16 @@ required remote resources:
     <!-- Paragraph -->
     <article>
         <div class="paragraph">
-            <pre>{{ content }}</pre>
+            {% assign lines = content | newline_to_br | replace: '<br />', '\n' | strip_newlines | split: '\n\n' %}
+            {% for line in lines %}
+            <p>{{ line | strip }}</p>
+            {% endfor %}
+<!--            <pre>{{ content }}</pre>-->
             <!-- Learn More button -->
-            <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 30px;">
+            <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 25px; padding-bottom: 25px">
                 <a class="cta" style="color: rgb(74, 72, 72);"
                    href="{{ page.vendorHopLink }}">
-                    <span>Watch Now>>></span>
+                    <span>Learn More>>></span>
                 </a>
             </div>
         </div>
@@ -308,13 +316,13 @@ required remote resources:
         by Google. YouTube is a trademark of Google, Inc.</p>
     <p class="disclaimer-txt">Please consult a health professional before implementing any strategy discussed on
         this website.</p>
+    <div class="tnc">
+        <a class="tnc-link" href="{{ page.privacyLink }}" title="" target="_blank"
+           rel="noopener"><span>Privacy</span></a>
+        <a class="tnc-link" href="{{ page.termsLink }}" title="" target="_blank"
+           rel="noopener"><span>Terms</span></a>
+    </div>
 </footer>
-<div class="tnc">
-    <a class="tnc-link" href="{{ page.privacyLink }}" title="" target="_blank"
-       rel="noopener"><span>Privacy</span></a>
-    <a class="tnc-link" href="{{ page.termsLink }}" title="" target="_blank"
-       rel="noopener"><span>Terms</span></a>
-</div>
 <script src="https://vitalityglow.life/lib/assets/js/app-1.0.js"></script>
 </body>
 </html>

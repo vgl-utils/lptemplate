@@ -46,8 +46,8 @@ required remote resources:
         .heading {
             letter-spacing: 0;
             text-align: center;
-            /*todo page variable doesn't work*/
-            font-size: min(9vw, 48px);
+            /*todo make header css overridable*/
+            font-size: min(8.8vw, 48px);
             font-weight: 900;
             line-height: 45px;
             padding: 20px 0;
@@ -289,7 +289,6 @@ required remote resources:
     </div>
     <!-- Image -->
     <div  class="lander-img-container">
-        <!-- todo cmc_vid not replace in edge but works in chrome when running locally why? -->
         <a class="cta" href="{{ page.vendorHopLink }}"
            target="_top">
             {% if page.enableVideo == true %}

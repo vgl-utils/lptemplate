@@ -316,10 +316,21 @@ required remote resources:
     <!-- Paragraph -->
     <article>
         <div class="paragraph">
-            {% assign lines = content | newline_to_br | replace: '<br />', '\n' | strip_newlines | split: '\n\n' %}
-            {% for line in lines %}
-            <p>{{ line | strip }}</p>
-            {% endfor %}
+        <!-- break content into <p>, print line breaks only if there are more than 1 blank lines  -->
+        {% assign lines = content | newline_to_br | split: '<br />' %}
+        {% assign emptyLineCount = 0 %}
+        {% for line in lines %}
+            {% assign strippedLine = line | strip %}
+            {% if strippedLine == "" %}
+                {% assign emptyLineCount = emptyLineCount | plus: 1 %}
+                {% if emptyLineCount > 1 %}
+                <p> </p>
+                {% endif %}
+            {% else %}
+                {% assign emptyLineCount = 0 %}
+                <p>{{ strippedLine | strip }}</p>
+            {% endif %}
+        {% endfor %}
 <!--            <pre>{{ content }}</pre>-->
             <!-- Learn More button -->
             <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 25px; padding-bottom: 25px">

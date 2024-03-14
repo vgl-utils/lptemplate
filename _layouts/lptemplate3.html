@@ -70,11 +70,6 @@ required remote resources:
             font-style: italic;
         }
 
-        .lander-img-container {
-            padding: 20px 0 5px;
-            position: relative; /* Add this line */
-        }
-
         .lander-img-hint {
             font-size: 17px;
             font-weight: 700;
@@ -91,6 +86,17 @@ required remote resources:
             height: auto;
         }
 
+        .yt-logo {
+            position: absolute;
+            bottom: 20px; /* Adjust bottom spacing as needed */
+            right: 40px; /* Adjust right spacing as needed */
+            color: white; /* Adjust text color as needed */
+            width: 120px;
+            height: auto;
+            opacity: 60%;
+            filter: brightness(60%);
+        }
+
         .img-text {
             position: absolute;
             top: 85%;
@@ -105,8 +111,13 @@ required remote resources:
             text-shadow: 2px 2px black;
         }
 
+        .lander-img-container {
+            padding: 20px 0 5px;
+            position: relative;
+        }
+
         .lander-img {
-            border: 3px solid black;
+            border: 5px solid #3c2726;
             width: 810px;
             height: 456px;
         }
@@ -228,7 +239,7 @@ required remote resources:
                 background-color: #efefef;
             }
             .main-body {
-                width: 95%;
+                width: 92%;
             }
             .tnc {
                 width: 90%;
@@ -237,11 +248,19 @@ required remote resources:
                 padding-top: 30px;
             }
             .lander-img {
-                width: 100%; /* Set the width to 100% for responsiveness */
+                width: 99%; /* Set the width to 100% for responsiveness */
                 height: auto; /* Maintain aspect ratio */
             }
             .play-btn {
                 width: 90px;
+            }
+            .yt-logo {
+                bottom: 20px; /* Adjust bottom spacing as needed */
+                right: 2px; /* Adjust right spacing as needed */
+                color: white; /* Adjust text color as needed */
+                width: 80px;
+                opacity: 60%;
+                filter: brightness(60%);
             }
             .watch-button {
                 width: 100%;
@@ -279,7 +298,9 @@ required remote resources:
             <img class="lander-img" src="{{ page.landerImage | default: 'lander.jpg' }}">
             {% endif %}
             {% include play-btn-b.html %}
-            <span class="img-text">WATCH SHORT, FREE VIDEO</span>
+            {% include youtube-logo.html %}
+
+<!--            <span class="img-text">WATCH SHORT, FREE VIDEO</span>-->
         </a>
     </div>
     <div>

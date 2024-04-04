@@ -13,6 +13,16 @@ required remote resources:
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Google tag (gtag.js) todo follow https://michaelsoolee.com/google-analytics-jekyll/ and parameterise gid -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DH6LXBT48B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-DH6LXBT48B');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: 'lp' }}</title>
     <link rel="icon" type="image/x-icon" href="https://vitalityglow.life/lib/assets/images/favicon.png">

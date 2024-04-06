@@ -56,8 +56,8 @@ required remote resources:
             letter-spacing: 0;
             text-align: center;
             /*font-size: min(8.8vw, 48px);*/
-            font-weight: 900;
-            line-height: 45px;
+            font-weight: 700;
+            line-height: 60px;
             padding: 20px 0;
             font-size: {{ page.headingFont | default: "min(8.8vw, 48px)" }};
         }
@@ -253,6 +253,9 @@ required remote resources:
             .main-body {
                 width: 92%;
             }
+            .heading {
+                line-height: 45px;
+            }
             .tnc {
                 width: 90%;
             }
@@ -343,7 +346,6 @@ required remote resources:
                 <p>{{ strippedLine | strip }}</p>
             {% endif %}
         {% endfor %}
-<!--            <pre>{{ content }}</pre>-->
             <!-- Learn More button -->
             <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 25px; padding-bottom: 25px">
                 <a class="cta" style="color: rgb(74, 72, 72);"

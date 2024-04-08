@@ -325,7 +325,7 @@ required remote resources:
 
     <a class="cta" href="{{ page.vendorHopLink }}"
        target="_top">
-        <div class="watch-button">WATCH NOW</div>
+        <div class="watch-button">{{ page.watchButtonText | default: 'LEARN MORE' }}</div>
     </a>
 
     <!-- Paragraph -->
@@ -347,12 +347,19 @@ required remote resources:
             {% endif %}
         {% endfor %}
             <!-- Learn More button -->
+<!--
             <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 25px; padding-bottom: 25px">
                 <a class="cta" style="color: rgb(74, 72, 72);"
                    href="{{ page.vendorHopLink }}">
                     <span>Learn More>>></span>
                 </a>
             </div>
+-->
+
+            <a class="cta" href="{{ page.vendorHopLink }}"
+               target="_top">
+                <div class="watch-button">{{ page.watchButtonText | default: 'LEARN MORE' }}</div>
+            </a>
         </div>
     </article>
 

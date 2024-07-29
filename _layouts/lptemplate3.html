@@ -3,7 +3,7 @@
 - lander.jpg
 - index.html with these inputs:
     headingLine, vendorHopLink, cmcProject, cmcHid, cmcUid, privacyLink, termsLink, content
-    optional: title, landerImage, enableVideo, playBtnMargin, watchButtonText, disableYoutubeLogo
+    optional: title, landerImage, enableVideo, playBtnMargin, playBtnMarginMobile, watchButtonText, disableYoutubeLogo
 
 required remote resources:
 - https://vitalityglow.life/lib/assets/js/app-1.0.js
@@ -93,7 +93,6 @@ required remote resources:
             transform: translate(-50%, -50%);
             width: 130px;
             height: auto;
-            /*todo cannot move to the left*/
             margin: {{ page.playBtnMargin | default: 0 }};
         }
 
@@ -268,6 +267,7 @@ required remote resources:
             }
             .play-btn {
                 width: 90px;
+                margin: {{ page.playBtnMarginMobile | default: 0 }};
             }
             .yt-logo {
                 bottom: 20px; /* Adjust bottom spacing as needed */

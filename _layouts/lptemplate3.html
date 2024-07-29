@@ -3,7 +3,7 @@
 - lander.jpg
 - index.html with these inputs:
     headingLine, vendorHopLink, cmcProject, cmcHid, cmcUid, privacyLink, termsLink, content
-    optional: title, landerImage, enableVideo
+    optional: title, landerImage, enableVideo, watchButtonText, disableYoutubeLogo
 
 required remote resources:
 - https://vitalityglow.life/lib/assets/js/app-1.0.js
@@ -313,7 +313,10 @@ required remote resources:
             <img class="lander-img" src="{{ page.landerImage | default: 'lander.jpg' }}">
             {% endif %}
             {% include play-btn-b.html %}
-            {% include youtube-logo.html %}
+
+            {% if page.disableYoutubeLogo != true %}
+                {% include youtube-logo.html %}
+            {% endif %}
 
 <!--            <span class="img-text">WATCH SHORT, FREE VIDEO</span>-->
         </a>

@@ -144,7 +144,7 @@ required remote resources:
             box-sizing: border-box;
             text-decoration: none; /* Remove underline from text */
             display: inline-block; /* Ensure button behaves like a button */
-            font-size: 30px;
+            font-size: min(5.3vw, 30px);
             font-weight: 700;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
@@ -160,7 +160,7 @@ required remote resources:
             font-weight: 400;
             text-align: left;
             white-space: pre-wrap;
-            color: rgb(102, 102, 102);
+            /*color: rgb(102, 102, 102);*/
             line-height: 29px;
             font-size: 18px;
             font-family: 'Poppins', sans-serif;
@@ -267,6 +267,9 @@ required remote resources:
                 width: 99%; /* Set the width to 100% for responsiveness */
                 height: auto; /* Maintain aspect ratio */
             }
+            .lander-img-hint {
+                font-size: 14px;
+            }
             .play-btn {
                 width: 90px;
                 margin: {{ page.playBtnMarginMobile | default: 0 }};
@@ -344,7 +347,7 @@ required remote resources:
             {% if strippedLine == "" %}
                 {% assign emptyLineCount = emptyLineCount | plus: 1 %}
                 {% if emptyLineCount > 1 %}
-                <p> </p>
+                <p style="margin: 0 0; line-height: 15px"> </p>
                 {% endif %}
             {% else %}
                 {% assign emptyLineCount = 0 %}

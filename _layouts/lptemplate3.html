@@ -3,7 +3,8 @@
 - lander.jpg
 - index.html with these inputs:
     headingLine, vendorHopLink, cmcProject, cmcHid, cmcUid, privacyLink, termsLink, content
-    optional: title, landerImage, enableVideo, playBtnMargin, playBtnMarginMobile, watchButtonText, disableYoutubeLogo
+    optional: title, landerImage, enableVideo, playBtnMargin, playBtnMarginMobile, watchButtonText, disableYoutubeLogo,
+              lineHeight, lineHeightMobile, headingFont, headingFontMobile
 
 required remote resources:
 - https://vitalityglow.life/lib/assets/js/app-1.0.js
@@ -57,7 +58,7 @@ required remote resources:
             text-align: center;
             /*font-size: min(8.8vw, 48px);*/
             font-weight: 700;
-            line-height: 60px;
+            line-height: {{ page.lineHeight | default: 60px }};
             padding: 20px 0;
             font-size: {{ page.headingFont | default: "min(8.8vw, 48px)" }};
         }
@@ -253,7 +254,8 @@ required remote resources:
                 width: 92%;
             }
             .heading {
-                line-height: 55px;
+                line-height: {{ page.lineHeightMobile | default: 50px }};
+                font-size: {{ page.headingFontMobile | default: "min(8.8vw, 38px)" }};
             }
             .tnc {
                 width: 90%;

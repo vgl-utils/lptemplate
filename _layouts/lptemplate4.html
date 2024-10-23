@@ -200,6 +200,16 @@ required remote resources:
             background-repeat: no-repeat;
         }
 
+        .footer-img {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            font-family: 'Lora', serif;
+            width: 871px;
+            margin: 0 auto; /* Center the content on the page */
+        }
+
         footer {
             background-color: rgb(240, 242, 244); /* Set background color */
             width: 100%; /* Expand background to full width */
@@ -373,9 +383,18 @@ required remote resources:
     <div id="loadingSpinner" class="hidden"></div>
     <div id="overlay"></div>
 </div>
-<div>
-    <img class="footer-img" src="footer.webp">
+
+<div class="footer-img">
+    {% assign footer_file = site.static_files | where: "name", 'footer.webp' | first %}
+
+    {% if footer_file %}
+    <div style="padding: 10px 0">{{page.footerImageText | default: 'Scientific References'}}</div>
+    <img src="footer.webp">
+    {% else %}
+    <div style="padding: 10px"></div>
+    {% endif %}
 </div>
+
 <footer>
     <p class="copyright-txt">Copyright © 2024 vitalityglow.life. All rights reserved.</p>
     <p class="disclaimer-txt">This site is not a part of Google, Inc. or Google.com, nor is it sponsored or endorsed

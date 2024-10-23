@@ -2,9 +2,9 @@
 
 - lander.jpg
 - index.html with these inputs:
-    topBanner, headingLine, vendorHopLink, cmcProject, cmcHid, cmcUid, privacyLink, termsLink, content
-    optional: title, landerImage, enableVideo
-
+    headingLine, vendorHopLink, cmcProject, cmcHid, cmcUid, privacyLink, termsLink, content
+    optional: title, landerImage, enableVideo, playBtnMargin, playBtnMarginMobile, watchButtonText, disableYoutubeLogo,
+              lineHeight, lineHeightMobile, headingFont, headingFontMobile, bottomButton
 
 required remote resources:
 - https://vitalityglow.life/lib/assets/js/app-1.0.js
@@ -14,10 +14,21 @@ required remote resources:
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Google tag (gtag.js) todo follow https://michaelsoolee.com/google-analytics-jekyll/ and parameterise gid -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DH6LXBT48B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DH6LXBT48B');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: 'lp' }}</title>
     <link rel="icon" type="image/x-icon" href="https://vitalityglow.life/lib/assets/images/favicon.png">
-    <link rel="stylesheet" href="https://vitalityglow.life/lib/assets/css/spinner-1.css">
+    <link rel="stylesheet" href="../assets/css/fonts.css">
+    <link rel="stylesheet" href="../assets/css/spinner-1.css">
     <script>
         window.clickmagick_cmc = {
             uid: '{{ page.cmcUid }}',
@@ -30,48 +41,50 @@ required remote resources:
     <script src='//cdn.clkmc.com/cmc.js'></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
+            background-color: rgba(17, 17, 17, 0.18);
         }
 
         .main-body {
             text-align: center;
             width: 871px;
             margin: 0 auto; /* Center the content on the page */
-        }
-
-        .top-banner {
-            position: relative;
-            background-color: #dc1818;
-            font-family: 'Yantramanav', sans-serif;
-            font-weight: 700;
-            font-size: 25px;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            width: 100%;
-            line-height: 40px;
+            background-color: white;
         }
 
         .heading {
-            position: relative;
-            width: 90%;
-            margin: 0 auto; /* Center the container using auto margin */
             letter-spacing: 0;
             text-align: center;
+            /*font-size: min(8.8vw, 48px);*/
             font-weight: 700;
-            line-height: 45px;
-            font-size: 36px;
-            padding: 20px 0;
+        line-height: {{ page.lineHeight | default: "60px" }};
+        padding: 20px 0;
+        font-size: {{ page.headingFont | default: "min(8.8vw, 48px)" }};
         }
 
         .heading span b {
-            color: rgb(1, 144, 222);
+            color: #dcae1e;
         }
 
-        .lander-img-container {
-            padding: 20px 0;
-            position: relative; /* Add this line */
+        .sub-heading {
+            font-family: 'Poppins', sans-serif;
+            line-height: 29px;
+            font-size: min(5vw, 27px);
+            font-weight: 400;
+            color: rgb(102, 102, 102);
+        }
 
+        .sub-heading span b {
+            color: #dcae1e;
+            font-style: italic;
+        }
+
+        .lander-img-hint {
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
         }
 
         .play-btn {
@@ -81,45 +94,79 @@ required remote resources:
             transform: translate(-50%, -50%);
             width: 130px;
             height: auto;
+        margin: {{ page.playBtnMargin | default: 0 }};
+        }
+
+        .yt-logo {
+            position: absolute;
+            bottom: 20px; /* Adjust bottom spacing as needed */
+            right: 40px; /* Adjust right spacing as needed */
+            margin: 0 5px 5px 0;
+            color: white; /* Adjust text color as needed */
+            width: 120px;
+            height: auto;
+            opacity: 60%;
+            filter: brightness(60%);
+        }
+
+        .img-text {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*width: 130px;*/
+            height: auto;
+            width: 100%;
+            color: #d0d0d0;
+            font-size: 35px;
+            font-weight: 900;
+            text-shadow: 2px 2px black;
+        }
+
+        .lander-img-container {
+            padding: 20px 0 5px;
+            position: relative;
         }
 
         .lander-img {
-            border: 3px solid black;
-            width: 728px;
-            height: 410px;
+            border: 1px solid #3c2726;
+            width: 810px;
+            height: 456px;
         }
 
         .watch-button {
-            border-radius: 5px; /* Round the corners slightly */
+            border-radius: 10px; /* Round the corners slightly */
             background-color: rgb(21, 95, 247);
-            color: white; /* White text for the button */
-            padding: 15px 0; /* Add padding for visual appeal */
-            margin-bottom: 40px;
-            text-align: center; /* Center the text within the button */
+            color: white;
+            padding: 12px 0;
+            margin: 10px 0 40px;
+            text-align: center;
             box-sizing: border-box;
             text-decoration: none; /* Remove underline from text */
             display: inline-block; /* Ensure button behaves like a button */
+            font-size: min(5.1vw, 25px);
             font-weight: 700;
             text-decoration: none;
+            /*font-family: 'Poppins', sans-serif;*/
             font-family: 'Yantramanav', sans-serif;
-
-            width: 100%;
+            width: 85%;
             line-height: 25px;
-            font-size: 25px;
         }
 
-        pre b {
-            font-weight: bold; /* Apply bold style to text inside strong tags */
+        .paragraph {
+            padding-left: 20px; /*somehow need padding to make text looked centered*/
         }
 
-        .paragraph pre {
-            font-family: 'Roboto', sans-serif;
+        .paragraph p {
             font-weight: 400;
             text-align: left;
-            line-height: 23px;
-            font-size: 19px;
-            padding-left: 10px; /*somehow need padding to make text looked centered*/
             white-space: pre-wrap;
+            color: black;
+            line-height: 29px;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            margin-block-end: 12px;
+            margin-block-start: 0;
         }
 
         .copyright-txt {
@@ -135,7 +182,7 @@ required remote resources:
             line-height: 20px;
             font-size: 14px;
             color: rgb(91, 90, 90);
-            font-weight: 700;
+            font-weight: 400;
             font-family: 'Yantramanav', sans-serif;
         }
 
@@ -157,6 +204,7 @@ required remote resources:
             background-color: rgb(240, 242, 244); /* Set background color */
             width: 100%; /* Expand background to full width */
             position: relative; /* Allow for positioning of inner content */
+            font-family: Roboto, sans-serif;
         }
 
         footer > * { /* Target all direct children of the footer */
@@ -172,7 +220,7 @@ required remote resources:
             box-sizing: border-box;
             left: 0;
             height: 120px;
-            padding: 10px;
+            padding: 10px 20px;
             width: 871px;
             margin: 0 auto; /* Center the content on the page */
         }
@@ -180,7 +228,7 @@ required remote resources:
         .tnc-link {
             padding-top: 20px;
             margin-left: 50px;
-            color: black;
+            color: #383838FF;
         }
 
         .hidden {
@@ -200,81 +248,144 @@ required remote resources:
 
         /*region mobile screen handling*/
         @media screen and (max-width: 871px), only screen and (max-device-width: 871px) {
-            .heading {
-                font-size: 30px;
-                line-height: 38px;
+            body {
+                background-color: #efefef;
             }
             .main-body {
-                width: 95%;
+                width: 92%;
             }
-            .tnc {
-                width: 90%;
-            }
-            .tnc-link {
-                padding-top: 30px;
-            }
-            .lander-img {
-                width: 100%; /* Set the width to 100% for responsiveness */
-                height: auto; /* Maintain aspect ratio */
-            }
-            .play-btn {
-                width: 90px;
-            }
+            .heading {
+            line-height: {{ page.lineHeightMobile | default: "50px" }};
+        font-size: {{ page.headingFontMobile | default: "min(8.8vw, 38px)" }};
+        }
+        .tnc {
+            width: 90%;
+        }
+        .tnc-link {
+            padding-top: 30px;
+        }
+        .lander-img {
+            width: 99%; /* Set the width to 100% for responsiveness */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .play-btn {
+            width: 90px;
+        margin: {{ page.playBtnMarginMobile | default: 0 }};
+        }
+        .yt-logo {
+            bottom: 20px; /* Adjust bottom spacing as needed */
+            right: 3px; /* Adjust right spacing as needed */
+            margin: 0 5px 5px 0;
+            color: white; /* Adjust text color as needed */
+            width: 80px;
+            opacity: 60%;
+            filter: brightness(60%);
+        }
+        .watch-button {
+            width: 100%;
+        }
+        .paragraph {
+            padding-left: 0; /*somehow need padding to make text looked centered*/
+        }
+        .img-text {
+            font-size: 20px;
+            font-weight: 700;
+        }
         }
         /*endregion*/
     </style>
 </head>
 <body>
-<div class="top-banner">{{ page.topBanner }}</div>
-
 <div class="main-body">
     <!-- Header -->
     <div class="heading">
         <span>{{ page.headingLine }}</span>
     </div>
+    <div class="sub-heading">
+        <span>{{ page.subHeading }}</span>
+    </div>
     <!-- Image -->
     <div  class="lander-img-container">
-        <!-- todo cmc_vid not replace in edge but works in chrome when running locally why? -->
         <a class="cta" href="{{ page.vendorHopLink }}"
            target="_top">
             {% if page.enableVideo == true %}
-            <video width="728" height="410" style="border: none" class="lander-img" autoplay loop muted playsinline>
+            <video width="810" height="456" style="border: none" class="lander-img" autoplay loop muted playsinline>
                 <source src="lander.mp4" type="video/mp4">
             </video>
             {% else %}
             <img class="lander-img" src="{{ page.landerImage | default: 'lander.jpg' }}">
             {% endif %}
             {% include play-btn-b.html %}
+
+            {% if page.disableYoutubeLogo != true %}
+            {% include youtube-logo.html %}
+            {% endif %}
+
+            <!--            <span class="img-text">WATCH SHORT, FREE VIDEO</span>-->
         </a>
     </div>
-    <!-- Paragraph -->
-    <article>
-        <div class="paragraph">
-            <pre>{{ content }}</pre>
-        </div>
-    </article>
+    <div>
+        <span style="vertical-align: middle;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2a8.445 8.445 0 0 1 3.55-6.42zm12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43a8.495 8.495 0 0 1 3.54 6.42zM18 11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2v-5zm-6 11c.14 0 .27-.01.4-.04c.65-.14 1.18-.58 1.44-1.18c.1-.24.15-.5.15-.78h-4c.01 1.1.9 2 2.01 2z"></path></svg></span>
+        <span class="lander-img-hint">Make sure your sound is turned on. Please wait up to 10 seconds for the video to load.</span>
+    </div>
 
     <a class="cta" href="{{ page.vendorHopLink }}"
        target="_top">
-        <div class="watch-button">Click Here To Watch The Video</div>
+        <div class="watch-button">{{ page.watchButtonText | default: 'WATCH NOW' }}</div>
     </a>
+
+    <!-- Paragraph -->
+    <article>
+        <div class="paragraph">
+            <!-- break content into <p>, print line breaks only if there are more than 1 blank lines  -->
+            {% assign lines = content | newline_to_br | split: '<br />' %}
+            {% assign emptyLineCount = 0 %}
+            {% for line in lines %}
+            {% assign strippedLine = line | strip %}
+            {% if strippedLine == "" %}
+            {% assign emptyLineCount = emptyLineCount | plus: 1 %}
+            {% if emptyLineCount > 1 %}
+            <p style="margin: 0 0; line-height: 15px"> </p>
+            {% endif %}
+            {% else %}
+            {% assign emptyLineCount = 0 %}
+            <p>{{ strippedLine | strip }}</p>
+            {% endif %}
+            {% endfor %}
+
+            {% if page.bottomButton == true %}
+            <a class="cta" href="{{ page.vendorHopLink }}"
+               target="_top">
+                <div class="watch-button">{{ page.watchButtonText | default: 'WATCH NOW' }}</div>
+            </a>
+            {% else %}
+            <!-- Learn More button -->
+            <div style="text-align: left; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; text-decoration: underline; font-style: italic; color: rgb(74, 72, 72); line-height: 32px; margin-bottom: 25px; padding-bottom: 25px">
+                <a class="cta" style="color: rgb(74, 72, 72);"
+                   href="{{ page.vendorHopLink }}">
+                    <span>Learn More>>></span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </article>
 
     <div id="loadingSpinner" class="hidden"></div>
     <div id="overlay"></div>
 </div>
 <footer>
-    <p class="copyright-txt">Copyright 2024. All rights reserved.</p>
+    <p class="copyright-txt">Copyright © 2024 vitalityglow.life. All rights reserved.</p>
     <p class="disclaimer-txt">This site is not a part of Google, Inc. or Google.com, nor is it sponsored or endorsed
         by Google. YouTube is a trademark of Google, Inc.</p>
     <p class="disclaimer-txt">Please consult a health professional before implementing any strategy discussed on
         this website.</p>
+    <div class="tnc">
+        <a class="tnc-link" href="{{ page.privacyLink }}" title="" target="_blank"
+           rel="noopener"><span>Privacy</span></a>
+        <a class="tnc-link" href="{{ page.termsLink }}" title="" target="_blank"
+           rel="noopener"><span>Terms</span></a>
+    </div>
 </footer>
-<div class="tnc">
-    <a class="tnc-link" href="{{ page.privacyLink }}" title="" target="_blank"
-       rel="noopener"><span>Privacy</span></a>
-    <a class="tnc-link" href="{{ page.termsLink }}" title="" target="_blank"
-       rel="noopener"><span>Terms</span></a>
-</div>
 <script src="https://vitalityglow.life/lib/assets/js/app-1.0.js"></script>
 </body>
 </html>
